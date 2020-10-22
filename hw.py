@@ -1,3 +1,5 @@
+##This program requires logininfo.py which is not on github
+
 import smtplib
 from email.message import EmailMessage
 import calendar
