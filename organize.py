@@ -47,10 +47,9 @@ for i in range(len(sortlist)):
             assignmentlist[i+1] = assignmentlist[i]
             assignmentlist[i] = temp
 
-with open('assignments.csv', 'w') as csvfile:
-    writer = csv.DictWriter(csvfile, fieldnames= ['course', 'assignment', 'startdate', 'duedate'])
-    writer.writeheader()
-    for row in assignmentlist:
+with open('assignments+.csv', 'w') as csvfile:
+    writer = csv.writer(csvfile)
+    for row in sortlist:
         writer.writerow(row)
 
 now=datetime.date.today()

@@ -1,51 +1,55 @@
 course,assignment,startdate,duedate
 CSE 142 A,LateDaysUsed,NA,NA
-HONORS 100 A,In-Class Participation,09 30,NA
-CSE 142,Checkpoint 1,NA,Oct 2 Fri
-MATH 126,Syllabus and Welcome Survey (Complete for Participation Points),09 30,10 05
-LING 200 A,Quiz 1: what is language,10 05,10 07
-CSE 142,Assessment 1,NA,Oct 7 Wed
-MATH 126,WS 1 (Canvas Quiz) Enter WS Answers here for credit - Tues/Wed,10 06,10 08
 CSE 190 B,Letter to Self,NA,10 09
-CSE 142,Checkpoint 2,NA,Oct 9 Fri
+CSE 190 B,Resume Draft,NA,10 16
+CSE 190 B,Scavenger Hunt,NA,10 23
+CSE 190 B,Career Prep,NA,10 24
+CSE 190 B,Weekly Study Plan,NA,10 30
+CSE 190 B,Section Specific Assignment,NA,11 06
+HONORS 100 A,Assignment #4: Experiential Learning Interview ,09 30,11 02
+HONORS 100 A,Assignment #5: Global Challenges: Interdisciplinary Answers Reflection,09 30,11 16
+HONORS 100 A,Autumn Quarter Portfolio Presentations (See Assignment Description for Presentation Due Date),09 30,12 07
+HONORS 100 A,In-Class Participation,09 30,NA
 HONORS 100 A,Assignment #1: Honors Curriculum Quiz ,09 30,10 12
 HONORS 100 A,Assignment #2: Who Are You?,09 30,10 12
+HONORS 100 A,Assignment #3: Personal Curriculum Planning,09 30,10 26
+HONORS 100 A,Assignment #6: Honors Portfolio & Autumn Quarter Reflection,09 30,11 23
+LING 200 A,Quiz 1: what is language,10 05,10 07
 LING 200 A,Quiz 2: Phonetics,10 12,10 14
-CSE 142,Assessment 2,NA,Oct 14 Wed
-MATH 126,Discussion Assignment 1 (Submit before Wed night) - Wed,09 30,10 15
-CSE 190 B,Resume Draft,NA,10 16
+LING 200 A,Quiz 3: Phonology,10 19,10 21
+LING 200 A,Quiz 4: Morphology,10 26,10 28
+LING 200 A,Quiz 5: Semantics,11 09,11 11
+LING 200 A,Quiz 6: Language Acquisition,11 16,11 18
 LING 200 A,Homework 1,10 09,10 16
+LING 200 A,Homework 2,10 16,10 23
+LING 200 A,Homework 3,10 23,10 30
+LING 200 A,Homework 4,11 06,11 13
+MATH 126,Syllabus and Welcome Survey (Complete for Participation Points),09 30,10 05
+MATH 126,Discussion Assignment 1 (Submit before Wed night) - Wed,09 30,10 15
+MATH 126,Discussion Participation Before Exam 2,10 16,10 29
+MATH 126,Discussion Participation Before Exam 3,10 30,11 12
+MATH 126,Discussion Participation Before Exam 4,11 13,12 01
+MATH 126,Discussion Participation Before Exam 5,12 02,12 12
+MATH 126,WS 1 (Canvas Quiz) Enter WS Answers here for credit - Tues/Wed,10 06,10 08
+MATH 126,QUIZ 1 - Ch. 13,10 22,10 26
+MATH 126,QUIZ 1 - Ch. 14,11 05,11 09
+MATH 126,Math 126 Section 14.7 (8th ed),NA,Nov 10
+MATH 126,Math 126 Section 15.2 (8th ed),NA,Nov 17
+MATH 126,Math 126 Section 15.1 (8th ed),NA,Nov 17
+CSE 142,Checkpoint 1,NA,Oct 2 Fri
+CSE 142,Assessment 1,NA,Oct 7 Wed
+CSE 142,Checkpoint 2,NA,Oct 9 Fri
+CSE 142,Assessment 2,NA,Oct 14 Wed
 CSE 142,Checkpoint 3,NA,Oct 16 Fri
 CSE 142,Assessment 3,NA,Oct 20 Tue
-LING 200 A,Quiz 3: Phonology,10 19,10 21
-MATH 126,Math 126 Section 13.2 (8th ed),NA,Oct 22
-CSE 190 B,Scavenger Hunt,NA,10 23
-LING 200 A,Homework 2,10 16,10 23
 CSE 142,Checkpoint 4,NA,Oct 23 Fri
-CSE 190 B,Career Prep,NA,10 24
-HONORS 100 A,Assignment #3: Personal Curriculum Planning,09 30,10 26
-MATH 126,QUIZ 1 - Ch. 13,10 22,10 26
-MATH 126,Math 126 Section 13.3 (8th ed),NA,Oct 27
-MATH 126,Math 126 Section 13.4 (8th ed),NA,Oct 27
 CSE 142,Assessment 4,Oct 20 Tue,Oct 27 Tue
-LING 200 A,Quiz 4: Morphology,10 26,10 28
-MATH 126,Discussion Participation Before Exam 2,10 16,10 29
-LING 200 A,Homework 3,10 23,10 30
 CSE 142,Checkpoint 5,NA,Oct 30 Fri
-HONORS 100 A,Assignment #4: Experiential Learning Interview ,09 30,11 02
-CSE 142,Assessment 5,Oct 27 Tue,Nov 3 Tue
+CSE 142,Assessment 5,Oct 27 Tue,Nov 4 Wed
 CSE 142,Checkpoint 6,NA,Nov 6 Fri
-CSE 142,Assessment 6,Nov 3 Tue,Nov 10 Tue
-LING 200 A,Quiz 5: Semantics,11 09,11 11
-MATH 126,Discussion Participation Before Exam 3,10 30,11 12
-LING 200 A,Homework 4,11 06,11 13
 CSE 142,Checkpoint X,NA,Nov 13 Fri
-LING 200 A,Quiz 6: Language Acquisition,11 16,11 18
+CSE 142,Assessment 6,Nov 6 Fri,Nov 17 Tue
 CSE 142,Checkpoint 7,NA,Nov 20 Fri
-HONORS 100 A,Assignment #6: Honors Portfolio & Autumn Quarter Reflection,09 30,11 23
-CSE 142,Assessment 7,Nov 13 Fri,Nov 24 Tue
-MATH 126,Discussion Participation Before Exam 4,11 13,12 01
+CSE 142,Assessment 7,Nov 17 Tue,Nov 24 Tue
 CSE 142,Assessment 8,Nov 24 Tue,Dec 3 Thu
 CSE 142,Checkpoint 8,NA,Dec 4 Fri
-HONORS 100 A,Autumn Quarter Portfolio Presentations (See Assignment Description for Presentation Due Date),09 30,12 07
-MATH 126,Discussion Participation Before Exam 5,12 02,12 12
