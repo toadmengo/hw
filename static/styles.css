@@ -1,0 +1,63 @@
+#msg {
+    text-align: center;
+    font-size:14px;
+}
+.heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+body {
+    background-color: beige;
+}
+
+
+.title {
+    text-align: center;
+}
+
+#Calendar {
+    width: 85%;
+    margin: auto;
+}
+
+.calendar-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.unit {
+    width: 13%;
+}
+.day {
+    width: 13%;
+}
+
+p {
+    font-size: 11px;
+}
+.assignment {
+    font-size: 13px;
+}
+.today {
+    background-color: lightgray;
+}
+
+.to-do {
+    color: red;
+}
+.done {
+    color: green;
+}
+#completed {
+    color: green;
+}
+#unfinished {
+    color: red;
+}
