@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for item in values %}
+    <p>Name: {{item.name}} duedate: {{item.duedate}} status: {{item.status}} duemonth:{{duemonth}}</p>
+    {% endfor %}
+{% endblock %}

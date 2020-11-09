@@ -40,8 +40,8 @@
                             {% if today + gap == i + week * 7 %}
                                 <div class= "card-body date today">
                                     {% for assign in assignmentlist %}
-                                    {% if assign[4] + gap == i + week * 7 %}
-                                    <div class='assignment'>{{assign[0]}}: {{assign[1]}} is due</div>
+                                    {% if assign.duedate.day + gap == i + week * 7 and assign.duedate.month == todaymonth %}
+                                    <div class='assignment'>{{assign.course}}: {{assign.name}} is due</div>
                                     {% endif %}
                                 {% endfor %}
                                 <br>
@@ -60,24 +60,24 @@
                                     {% endif %}
                                 {% endfor %}
                                 {% for assign in assignmentlist %}
-                                    {% if assign[4] + gap == i + week * 7 %}
+                                    {% if assign.duedate.day + gap == i + week * 7 and assign.duedate.month == todaymonth %}
                                     <br>
-                                        {% if assign[5] ==1 %}
+                                        {% if assign.status ==1 %}
                                         <div class='card assignment to-do'>
-                                            {{assign[0]}}: {{assign[1]}} is due
+                                            {{assign.course}}: {{assign.name}} is due
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name={{assign[6]}} value=2 id="defaultCheck1">
+                                                <input class="form-check-input" type="checkbox" name={{assign._id}} value=2 id="defaultCheck1">
                                                 <label class="form-check-label" for="defaultCheck1" id = 'completed'>
                                                   Done
                                                 </label>
                                               </div>
                                               
                                         </div>
-                                        {% elif assign[5] == 2 %}
+                                        {% elif assign.status == 2 %}
                                         <div class='card assignment done'>
-                                            {{assign[0]}}: {{assign[1]}} is due
+                                            {{assign.course}}: {{assign.name}} is due
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name={{assign[6]}} value=1 id="defaultCheck1">
+                                                <input class="form-check-input" type="checkbox" name={{assign._id}} value=1 id="defaultCheck1">
                                                 <label class="form-check-label" for="defaultCheck1" id = 'unfinished'>
                                                   To-do
                                                 </label>
@@ -85,7 +85,7 @@
                                         </div>                                        
                                         {% else %}
                                         <div class='card assignment not-to-do'>
-                                            {{assign[0]}}: {{assign[1]}} is due
+                                            {{assign.course}}: {{assign.name}} is due
                                         </div>
                                         {% endif %}
                                     {% endif %}
