@@ -35,8 +35,8 @@ app.secret_key = "biden2020"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-db = SQLAlchemy(app)
 
+db = SQLAlchemy(app)
 class assignments(db.Model):
     _id = db.Column("id", db.Integer, primary_key = True)
     course = db.Column(db.String(100))
@@ -44,8 +44,7 @@ class assignments(db.Model):
     startdate = db.Column(db.Date)
     duedate = db.Column(db.Date)
     status = db.Column(db.Integer)
-
-    
+ 
     def __init__(self, course, name, startdate, duedate, status):
         self.course = course
         self.name = name
@@ -54,38 +53,29 @@ class assignments(db.Model):
         self.status = status
 
 
-
 @app.route("/")
 def home():
-    return redirect(url_for("first"))
-
-@app.route("/first", methods = ['POST', 'GET'])
-def first():
-
     today= date.today()
-    tod = today.day
+    session["year"] = today.year
+    return redirect(url_for("first", whatmonth = today.month))
 
+@app.route("/<whatmonth>", methods = ['POST', 'GET'])
+def first(whatmonth):
+    today= date.today()
+    year = session['year']
+    whatmonth = int(whatmonth)
+    if whatmonth == 13:
+        whatmonth = 1
+        year += 1
+    if whatmonth == 0:
+        whatmonth = 12
+        year -= 1
+    
     datelist=[]
-    monthrange = calendar.monthrange(today.year, today.month)[1]
+    monthrange = calendar.monthrange(year, whatmonth)[1]
     for i in range(monthrange):
-        datelist.append([datetime.date(today.year, today.month, i+1), i+1])
-    month = calendar.month_name[today.month]
-
-    tomdatelist=[]
-    if today.month!=12:
-        tommonthrange = calendar.monthrange(today.year, today.month+1)[1]
-        tommonth = calendar.month_name[today.month+1]
-        nextmonth = datetime.date(today.year, today.month+1, 1)
-    else:
-        tommonthrange = calendar.monthrange(today.year+1, today.month-11)[1]
-        tommonth = calendar.month_name[today.month-11]
-        nextmonth = datetime.date(today.year+1, today.month-11, 1)
-
-    for i in range(tommonthrange):
-        try:
-            tomdatelist.append([datetime.date(today.year, today.month+1, i+1), i+1])
-        except:
-            tomdatelist.append([datetime.date(today.year+1, today.month-11, i+1), i+1])
+        datelist.append([datetime.date(year, whatmonth, i+1), i+1])
+    monthname = calendar.month_name[whatmonth]
 
     for i in todlist:
         foundassignment = assignments.query.filter_by(name=i[1]).first()
@@ -95,7 +85,12 @@ def first():
             db.session.add(newassign)
             db.session.commit()
 
-    if request.method == 'POST':      
+    if request.method == 'POST': 
+        try:
+            changemonth = int(request.form['button'])
+            whatmonth += changemonth
+        except:
+            pass
         change = False
         assi = assignments.query.all()
         for i in assi:
@@ -118,41 +113,24 @@ def first():
                     print('added!')
                     newassign = assignments(i[0], i[1], i[2], i[3], status)
                     db.session.add(newassign)
-                    db.session.commit()
-                    
+                    db.session.commit()        
         if change:
             flash("Changes marked", "info")
             
-        return redirect(url_for("first"))
+        return redirect(url_for("first", whatmonth=whatmonth))
 
-    gap = calendar.monthrange(today.year, today.month)[0]-1
+    if whatmonth == today.month:
+        tod = today.day
+    else:
+        tod = -10
+    gap = calendar.monthrange(year, whatmonth)[0]-1
     qry = assignments.query.all()
-    return render_template("firstmonth.html", assignmentlist= qry, datelist = datelist, gap = gap, today= tod, month = month, todaymonth = today.month)
+    return render_template("firstmonth.html", assignmentlist= qry, datelist = datelist, gap = gap, today= tod, month = monthname, todaymonth = whatmonth)
 
 @app.route("/view")
 def view():
     return render_template("view.html", values = assignments.query.all())
 
-@app.route("/next", methods = ['POST', 'GET'])
-def next():
-    if request.method == 'POST':      
-        change = False
-        for i in tomlist:
-            try:
-                status = request.form[f"{i[6]}"]
-                change = True
-                print(i, status) ### post method of checkbox switches the status of the assignment
-            except:
-                pass
-        if change:
-            flash("Changes marked", "info")
-        return redirect(url_for("next"))
-
-    if today.month != 12:
-        gap = calendar.monthrange(today.year, today.month+1)[0]-1
-    else:
-        gap = calendar.monthrange(today.year+1, today.month-11)[0]-1
-    return render_template("nextmonth.html", assignmentlist= tomlist, datelist = tomdatelist, gap = gap, today= -1, month = tommonth)
 
 if __name__ == "__main__":
     db.create_all()
