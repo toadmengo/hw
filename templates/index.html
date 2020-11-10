@@ -67,7 +67,7 @@
                                         </div>
                                         {% elif assign.status == 2 %}
                                         <div class='card assignment done today'>
-                                            {{assign.course}}: {{assign.name}} is due
+                                            {{assign.course}}: {{assign.name}} is completed
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name={{assign._id}} value=1 id="defaultCheck1">
                                                 <label class="form-check-label" for="defaultCheck1" id = 'unfinished'>
@@ -83,7 +83,7 @@
                                         </div>                                        
                                         {% elif assign.status == 0 %}
                                         <div class='card assignment not-to-do'>
-                                            {{assign.course}}: {{assign.name}} is due
+                                            {{assign.course}}: {{assign.name}}
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name={{assign._id}} value=3 id="defaultCheck1">
                                                 <label class="form-check-label" for="defaultCheck1" id = 'delete'>
@@ -126,7 +126,7 @@
                                         </div>
                                         {% elif assign.status == 2 %}
                                         <div class='card assignment done'>
-                                            {{assign.course}}: {{assign.name}} is due
+                                            {{assign.course}}: {{assign.name}} is completed
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name={{assign._id}} value=1 id="defaultCheck1">
                                                 <label class="form-check-label" for="defaultCheck1" id = 'unfinished'>
@@ -142,7 +142,7 @@
                                         </div>                                        
                                         {% elif assign.status == 0 %}
                                         <div class='card assignment not-to-do'>
-                                            {{assign.course}}: {{assign.name}} is due
+                                            {{assign.course}}: {{assign.name}}
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name={{assign._id}} value=3 id="defaultCheck1">
                                                 <label class="form-check-label" for="defaultCheck1" id = 'delete'>
