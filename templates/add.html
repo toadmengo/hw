@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for msg in messages %}
+    <div class="alert alert-info" role="alert">
+        <p id = "msg">{{msg}}</p>
+      </div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+<h1 class = 'title'>Add an assignment</h1>
+<div class= 'card' id='Calendar'>
+    <div class = 'card-body'>
+        <a id='homelink' href="/">Go back</a>
+        <p></p>
+
+        <form action="#" method = "POST">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Course:</span>
+                </div>
+                <input type="text", name='course', class="form-control" id="basic-url" aria-describedby="basic-addon3">
+              </div>
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Assignment name:</span>
+                </div>
+                <textarea class="form-control", name='name', aria-label="With textarea"></textarea>
+              </div>
+            <br>
+            <div class='flex'>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Start-date: mm/dd/yyyy</span>
+                </div>
+                <input type="text", name='smonth', class="form-control">
+                <input type="text", name= 'sday', class="form-control">
+                <input type="text", name='syear', class="form-control">
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">due-date: mm/dd/yyyy</span>
+                </div>
+                <input type="text", name='dmonth', class="form-control">
+                <input type="text", name= 'dday', class="form-control">
+                <input type="text", name='dyear', class="form-control">
+              </div>
+            </div>
+
+            <br>
+            <button type="submit" class="btn btn-primary">Add assignment</button>
+            
+
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

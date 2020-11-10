@@ -17,7 +17,7 @@ body {
 }
 
 #Calendar {
-    width: 85%;
+    width: 95%;
     margin: auto;
 }
 
@@ -33,10 +33,10 @@ body {
 }
 
 .unit {
-    width: 13%;
+    width: 14%;
 }
 .day {
-    width: 13%;
+    width: 14%;
 }
 
 p {
@@ -60,4 +60,17 @@ p {
 }
 #unfinished {
     color: red;
+}
+#delete {
+    color: black;
+}
+
+#bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
 }

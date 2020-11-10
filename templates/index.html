@@ -17,9 +17,10 @@
         <div class = 'card-body'>
             <div class = 'heading'>
                 <h5 class="card-title">{{month}}</h5>
-                {% block button %}
-
-                {% endblock %}
+                    <form action="#" method = "POST">
+                        <button name="button", value="-1", type="submit" class="btn btn-primary">Previous Month</button>
+                        <button name="button", value="1", type="submit" class="btn btn-primary">Next month</button>
+                    </form>
             </div>
             <br>
             <div class = 'calendar-wrapper'>
@@ -46,7 +47,7 @@
                                 {% endfor %}
                                 {% for assign in assignmentlist %}
                                     {% if assign.duedate.day + gap == i + week * 7 and assign.duedate.month == todaymonth %}
-                                    <br>
+                                    <p></p>
                                         {% if assign.status ==1 %}
                                         <div class='card assignment to-do today'>
                                             {{assign.course}}: {{assign.name}} is due
@@ -55,7 +56,13 @@
                                                 <label class="form-check-label" for="defaultCheck1" id = 'completed'>
                                                   Done
                                                 </label>
-                                              </div>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name={{assign._id}} value=3 id="defaultCheck1">
+                                                <label class="form-check-label" for="defaultCheck1" id = 'delete'>
+                                                  Delete
+                                                </label>
+                                            </div>
                                               
                                         </div>
                                         {% elif assign.status == 2 %}
@@ -66,11 +73,23 @@
                                                 <label class="form-check-label" for="defaultCheck1" id = 'unfinished'>
                                                   To-do
                                                 </label>
-                                              </div>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name={{assign._id}} value=3 id="defaultCheck1">
+                                                <label class="form-check-label" for="defaultCheck1" id = 'delete'>
+                                                  Delete
+                                                </label>
+                                            </div>
                                         </div>                                        
-                                        {% else %}
+                                        {% elif assign.status == 0 %}
                                         <div class='card assignment not-to-do'>
                                             {{assign.course}}: {{assign.name}} is due
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name={{assign._id}} value=3 id="defaultCheck1">
+                                                <label class="form-check-label" for="defaultCheck1" id = 'delete'>
+                                                  Delete
+                                                </label>
+                                            </div>
                                         </div>
                                         {% endif %}
                                     {% endif %}
@@ -87,7 +106,7 @@
                                 {% endfor %}
                                 {% for assign in assignmentlist %}
                                     {% if assign.duedate.day + gap == i + week * 7 and assign.duedate.month == todaymonth %}
-                                    <br>
+                                    <p></p>
                                         {% if assign.status ==1 %}
                                         <div class='card assignment to-do'>
                                             {{assign.course}}: {{assign.name}} is due
@@ -96,7 +115,13 @@
                                                 <label class="form-check-label" for="defaultCheck1" id = 'completed'>
                                                   Done
                                                 </label>
-                                              </div>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name={{assign._id}} value=3 id="defaultCheck1">
+                                                <label class="form-check-label" for="defaultCheck1" id = 'delete'>
+                                                  Delete
+                                                </label>
+                                            </div>
                                               
                                         </div>
                                         {% elif assign.status == 2 %}
@@ -107,11 +132,23 @@
                                                 <label class="form-check-label" for="defaultCheck1" id = 'unfinished'>
                                                   To-do
                                                 </label>
-                                              </div>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name={{assign._id}} value=3 id="defaultCheck1">
+                                                <label class="form-check-label" for="defaultCheck1" id = 'delete'>
+                                                  Delete
+                                                </label>
+                                            </div>
                                         </div>                                        
-                                        {% else %}
+                                        {% elif assign.status == 0 %}
                                         <div class='card assignment not-to-do'>
                                             {{assign.course}}: {{assign.name}} is due
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name={{assign._id}} value=3 id="defaultCheck1">
+                                                <label class="form-check-label" for="defaultCheck1" id = 'delete'>
+                                                  Delete
+                                                </label>
+                                            </div>
                                         </div>
                                         {% endif %}
                                     {% endif %}
@@ -125,11 +162,24 @@
                 </div>
                 {% endfor %}
                 <br>
-                <button type="submit" class="btn btn-primary">Submit changes</button>
-                </form>
-                
+                <div id = 'bottom'>
+                    <button type="submit" class="btn btn-primary">Submit changes</button>
+                    <a href="/add", id = 'add'>Add an assignment</a>
+                </div>
+                </form>                
                 <br>
-                <div class="row">
+                <h5>Urgent Assignments:</h5>
+                <br>
+                {% for assign in assignmentlist %}
+                {% if assign.status == 1 %}
+                    <div class = "card">
+                        <div class = "card-body">
+                            {{assign.course}}: {{assign.name}} is due on {{assign.duedate}}
+                        </div>
+                    </div>
+                    <br>
+                {% endif %}
+                {% endfor %}
                 </div>
             </div>
 

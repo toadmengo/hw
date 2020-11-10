@@ -7,10 +7,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 todlist=[]
 today= date.today()
-tod = today.day
 with open('assignments+.csv') as csvfile:
     reader = csv.reader(csvfile)
-    id = 0
     for row in reader:
         if row:
             times = row[3].split("-")
@@ -19,15 +17,11 @@ with open('assignments+.csv') as csvfile:
             row[2] = datetime.date(int(startimes[0]), int(startimes[1]), int(startimes[2]))
 
             day = int(times[2])
-            row.append(day)
             if today >= row[2] and today <= row[3]:
                 row.append(1)
             else:
                 row.append(0) 
-            row.append(str(id))
             todlist.append(row)
-
-            id += 1
 
 
 app = Flask(__name__)
@@ -81,7 +75,7 @@ def first(whatmonth):
         foundassignment = assignments.query.filter_by(name=i[1]).first()
         if not foundassignment:
             print('added!')
-            newassign = assignments(i[0], i[1], i[2], i[3], i[5])
+            newassign = assignments(i[0], i[1], i[2], i[3], i[4])
             db.session.add(newassign)
             db.session.commit()
 
@@ -95,7 +89,7 @@ def first(whatmonth):
         assi = assignments.query.all()
         for i in assi:
             try:
-                status = request.form[f"{i._id}"]
+                status = int(request.form[f"{i._id}"])
                 change = True
                 changestatus = True
                 print('change')
@@ -104,13 +98,11 @@ def first(whatmonth):
                 pass
             
             if changestatus: ### post method of checkbox switches the status of the assignment
-                foundassignment = assignments.query.filter_by(name=i.name).first()
+                foundassignment = assignments.query.filter_by(_id=i._id).first()
                 if foundassignment:
-                    print('changed!')
                     foundassignment.status = status
                     db.session.commit()
                 else:
-                    print('added!')
                     newassign = assignments(i[0], i[1], i[2], i[3], status)
                     db.session.add(newassign)
                     db.session.commit()        
@@ -124,8 +116,36 @@ def first(whatmonth):
     else:
         tod = -10
     gap = calendar.monthrange(year, whatmonth)[0]-1
-    qry = assignments.query.all()
-    return render_template("firstmonth.html", assignmentlist= qry, datelist = datelist, gap = gap, today= tod, month = monthname, todaymonth = whatmonth)
+    qry = assignments.query.order_by(assignments.duedate.asc()).all()
+    return render_template("index.html", assignmentlist= qry, datelist = datelist, gap = gap, today= tod, month = monthname, todaymonth = whatmonth)
+
+@app.route("/add", methods = ['POST', 'GET'])
+def add():
+    if request.method == 'POST': 
+        try:
+            course = request.form['course']
+            name = request.form['name']
+            syear = int(request.form['syear'])
+            smonth = int(request.form['smonth'])
+            sday = int(request.form['sday'])
+            dyear = int(request.form['dyear'])
+            dmonth = int(request.form['dmonth'])
+            dday = int(request.form['dday']) 
+            sdate=datetime.date(syear,smonth,sday)
+            ddate=datetime.date(dyear,dmonth,dday)
+            if today >= sdate and today <= ddate:
+                status = 1
+            else:
+                status = 0
+            newassign = assignments(course, name, sdate, ddate, status)
+            db.session.add(newassign)  
+            db.session.commit()
+            return redirect(url_for('home'))
+        except:
+            flash("Error adding assignment", "info")
+            return redirect(url_for('add'))
+
+    return render_template('add.html')
 
 @app.route("/view")
 def view():
