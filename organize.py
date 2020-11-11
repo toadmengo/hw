@@ -1,5 +1,6 @@
 import csv
 import datetime
+import sendinfo
 
 assignmentlist=[]
 sortlist=[]
@@ -57,7 +58,7 @@ for row in sortlist:
     if (row[3]-now <= datetime.timedelta(7) and row[3]-now >= datetime.timedelta()):
         urgentassigns.append(row)
 
-
+sendinfo.main()
 
 
 
